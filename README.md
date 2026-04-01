@@ -10,7 +10,11 @@ This fork adds compatibility with **Microsoft Flight Simulator 2024**.
 The original tool only detected `FlightSimulator.exe` (MSFS 2020). This fork
 also detects `FlightSimulator2024.exe`, making it work with both versions.
 
-### Running from source (MSFS 2020 or 2024)
+## Download
+
+👉 **[Download MSFS GeoShot v1.0.1](https://github.com/fitzroymckay/msfs-geoshot/releases/latest)** — no Python required, just download and run the `.exe`.
+
+## Running from source (MSFS 2020 or 2024)
 
 **Requirements:** Python 3.9+, 64-bit Windows
 ```bash
@@ -50,27 +54,7 @@ Start MSFS 2024 and load into a flight before running the tool.
 |                                                                                                  |                                                                                                |
 
 
-## Installation and Use
 
-> ⚠️ **MSFS 2024 users:** The installer on flightsim.to is for MSFS 2020 only
-> and will **not** work with MSFS 2024. Use the instructions below instead.
-
-### Running from source (supports both MSFS 2020 and MSFS 2024)
-
-**Requirements:** Python 3.9+ (64-bit), Windows
-```bash
-git clone https://github.com/fitzroymckay/msfs-geoshot.git
-cd msfs-geoshot
-python -m venv .venv
-.venv\Scripts\activate
-pip install SimConnect psutil PyQt5 multiexit piexif requests Pillow pywin32 pyqt5-tools
-pyuic5 qtdesigner\feedback.ui -o msfs_geoshot\gui\forms\feedback.py
-pyuic5 qtdesigner\main_window.ui -o msfs_geoshot\gui\forms\main_window.py
-New-Item msfs_geoshot\gui\forms\__init__.py -Type File
-python -m msfs_geoshot
-```
-
-Start MSFS and load into a flight before launching the tool.
 
 ## Contributing
 

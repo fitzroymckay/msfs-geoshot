@@ -96,10 +96,16 @@ block_cipher = None
 
 # ---- Main spec definitions ----
 
+import os
+ROOT = os.path.join(SPECPATH, '..')
+
 a = Analysis(
-    [f"{PACKAGE_NAME}\\__main__.py"],
-    binaries=binaries,
-    datas=datas,
+    [os.path.join(ROOT, PACKAGE_NAME, '__main__.py')],
+    pathex=[ROOT],
+    binaries=[(os.path.join(ROOT, src), dst) for src, dst in binaries],
+    datas=[(os.path.join(ROOT, src), dst) for src, dst in datas
+           if not os.path.isabs(src)] + [(src, dst) for src, dst in datas
+           if os.path.isabs(src)],
     hiddenimports=hiddenimports,
     hookspath=[],
     runtime_hooks=[],
@@ -131,5 +137,5 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
     version=windows_version_info,
-    icon=f"{PACKAGE_NAME}\\_resources\\main.ico",
+    icon=os.path.join(ROOT, PACKAGE_NAME, '_resources', 'main.ico'),
 )
